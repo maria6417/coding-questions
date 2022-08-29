@@ -10,6 +10,7 @@
 // check each element in the array if bigger than first element
 // if bigger, then as result, add difference of two + recursive call of remainding array
 var maxProfit = function(prices) {
+    if (prices.length === 1) return 0;
     let total = 0;
     for (let i = 1; i < prices.length; i++) {
         // check if bigger than previous, if so, add difference to total
