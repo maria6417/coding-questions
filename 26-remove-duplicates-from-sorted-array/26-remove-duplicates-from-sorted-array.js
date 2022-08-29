@@ -8,21 +8,26 @@
 // E: 
 
 // should be replaced inplace, 
-// iterate through the nums
-// check if it equals '_', if so break the iteration
-// if number equals the previous number (if any), then splice it, and then push '_'
-// if not, increment pointer and proceed with iteration
+// two pointers
+// one that iterates through the array
+// one that keeps track of where the last + 1 index of the unique elements 
+// (which will be used to swap elements when found a unique value)
+
+// starting off both from 0
+// iterate, check if current is unique
+// if so, we will replace that element at position 2nd pointer
+// once the iteration completes, we will return 2nd pointer
 
 var removeDuplicates = function(nums) {
-    console.log(nums);
-    let index = 0;
-    while (nums[index] !== '_' && index !== nums.length) {
-        if (index !== 0 && nums[index] === nums[index - 1]) {
-            nums.splice(index, 1);
-            nums.push('_');
-        } else {
-            index++;
+    let uniqueIndex = 0;
+    
+    for (let i = 0; i < nums.length; i++) {
+        if (i === 0 || nums[i] !== nums[i - 1]) {
+            // unique
+            nums[uniqueIndex] = nums[i];
+            uniqueIndex++;
         }
     }
-    return index;
+    
+    return uniqueIndex;
 };
