@@ -19,15 +19,14 @@
 // once the iteration completes, we will return 2nd pointer
 
 var removeDuplicates = function(nums) {
-    let uniqueIndex = 0;
-    
-    for (let i = 0; i < nums.length; i++) {
-        if (i === 0 || nums[i] !== nums[i - 1]) {
-            // unique
-            nums[uniqueIndex] = nums[i];
-            uniqueIndex++;
+    if (nums.length <= 1) return;
+    let insertIndex = 1;
+    for (let i = 1; i < nums.length; i++) {
+        // check if unique, if so replace at insertIndex and increment
+        if (nums[i] !== nums[i - 1]) {
+            nums[insertIndex] = nums[i];
+            insertIndex++;
         }
     }
-    
-    return uniqueIndex;
+    return insertIndex;
 };
