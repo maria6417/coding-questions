@@ -5,7 +5,7 @@
 
 // 9
 // declare target value = targetIndex + 1
-// declare target index = last index - 1
+// target index = last index - 1
 // while target value is more than 10 ...
 // assign targetvalue's 1st digit to that index 0 to
 // if target value is more than 10 and targetIndex < 0 ...
@@ -16,17 +16,18 @@
 
 
 var plusOne = function(digits) {
-    let targetIndex = digits.length - 1;
-    let targetValue = ++digits[targetIndex];
-    while (targetValue > 9) {
-        digits[targetIndex] = 0;
-        if (targetIndex === 0) {
-            digits.unshift(1);
-            targetValue = 1;
+    // iterate backwards
+    // find the last non-9 number, and increment that
+    // if end of iteration and not found a 9, then just add 1 to beginning of array
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (digits[i] !== 9) {
+            // increment
+            digits[i] = digits[i] + 1;
+            return digits;
         } else {
-            targetIndex--;
-            targetValue = ++digits[targetIndex];
+            digits[i] = 0;
         }
     }
+    digits.unshift(1);
     return digits;
 };
