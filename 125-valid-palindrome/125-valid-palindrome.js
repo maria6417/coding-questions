@@ -6,7 +6,6 @@ var isPalindrome = function(s) {
     // convert s to include alphanumeric letters
     // using ascii?
     s = s.toLowerCase().replace(/[^a-z\d]/g, '');
-    console.log(s);
     
     // if string length is less than 2 return true
     if (s.length <= 1) return true;
