@@ -21,12 +21,12 @@ var topKFrequent = function(nums, k) {
     // on index of array of the value, set value as an array of key of tracker (or push if exists)
     
     // declare array
-    let result = [];
+    const result = [];
     // the max index of the array is the max, so pop element out and push to result array k times
     while (result.length < k) {
         const popped = count.pop();
         if (popped) {
-            result = result.concat(popped);
+            result.push(...popped);
         }
     }
     
