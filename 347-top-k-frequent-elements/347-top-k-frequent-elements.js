@@ -11,38 +11,25 @@ var topKFrequent = function(nums, k) {
         tracker[num] = (tracker[num] | 0) + 1;
     }
     
-    // { 3: 1}
-    // define array by order of value bigger to smaller
-    const result = [];
-    // while array length is smaller than k
-    while (result.length < k) {
-        let max = -Infinity;
-        let maxKey = -1;
-        for (let key in tracker) {
-            if (tracker[key] > max) {
-                max = tracker[key];
-                maxKey = key;
-            }
-        }
-        result.push(maxKey);
-        delete tracker[maxKey];
+    // declare array
+    const count = [];
+    // iterate through tracker
+    for (let key in tracker) {
+        count[tracker[key]] ? count[tracker[key]].push(key) : count[tracker[key]] = [key];
     }
-    // iterate through object
-    // get key with max value
-    // push to array
-    return result;
-    // return array
+    console.log(count);
+    // on index of array of the value, set value as an array of key of tracker (or push if exists)
     
-    // // declare result array
-    // const result = [];
-    // // [1, 2]
-    // // iterate through the object, check if the value is equal to or larger than k
-    // for (let key in tracker) {
-    //     if (tracker[key] >= k) {
-    //         result.push(key);
-    //     }
-    // }
-    // // if so, push key to result array
-    // return result;
-    // // return result array
+    // declare array
+    let result = [];
+    // the max index of the array is the max, so pop element out and push to result array k times
+    while (result.length < k) {
+        const popped = count.pop();
+        if (popped) {
+            result = result.concat(popped);
+        }
+    }
+    
+    return result;
+    
 };
