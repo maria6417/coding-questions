@@ -28,9 +28,6 @@ var findMin = function(nums) {
             r = m - 1;
         } else if (nums[m] > nums[l]) {
             l = m + 1;
-        } else {
-            console.log('here', nums[m]);
-            r = m - 1;
         }
     }
     
