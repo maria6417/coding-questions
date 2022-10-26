@@ -10,18 +10,18 @@
  * @return {ListNode}
  */
 var reverseList = function(head) {
-    if (!head || !head.next) return head;
-    // continue pushing the node to stack until the next is null.
-    // take out from stack, and keep track of the first as head
-    // set it's next to the next on stack if exists, if not, set as null
-    // return new head
+   if (!head || !head.next) return head;
+    const stack = [];
     
-    // recursively
-    // return itself when the next is null
-    // otherwise, set its next to
-    const newHead = reverseList(head.next);
-    let curr = head.next;
-    head.next = null;
-    curr.next = head;
+    while(head) {
+        stack.push(head);
+        head = head.next;
+    }
+    
+    const newHead = stack[stack.length - 1];
+    while(stack.length) {
+        head = stack.pop();
+        head.next = stack[stack.length - 1] || null;
+    }
     return newHead;
 }; 
