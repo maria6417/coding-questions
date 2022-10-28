@@ -18,11 +18,11 @@ var hasCycle = function(head) {
     // }
     // return false;
     
-    let slow = head, fast = head?.next?.next || null;
-    while (slow && fast) {
-        if (slow === fast) return true;
+    let slow = head, fast = head;
+    while (fast && fast.next) {
         slow = slow.next;
-        fast = fast?.next?.next || null;
+        fast = fast.next.next;
+        if (slow === fast) return true;
     }
     return false;
 };
